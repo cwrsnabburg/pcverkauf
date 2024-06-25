@@ -109,54 +109,91 @@
             left: 0;
             right: 0;
         }
+
+
+
+        .image-container {
+      display: flex; /* Flexbox für Zentrierung */
+      justify-content: center; /* Horizontal zentrieren */
+      margin-top: 20px; /* Optional: Abstand zum oberen Inhalt */
+    }
+
+    .image-placeholder {
+      width: 600px; 
+      height: 450px;
+      border: 2px dashed white;
+      margin: 0 10px; 
+      text-align: center;
+      line-height: 200px;
+      color: white;
+      display: none; /* Alle Bilder außer dem ersten verstecken */
+    }
+
+    .image-placeholder:first-child { /* Erstes Bild anzeigen */
+      display: block;
+    }
+
+    .arrow {
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      align-self: center; /* Pfeile vertikal zentrieren */
+    }
+
     </style>
 </head>
 <body>
 
   <h1><font size="9" color="white">Sende uns eine E-Mail fuer eine Bestellung:</font></h1>
   <br>
+  <h1><font size="9" color="white">50€ Pro Setup</font></h1>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <div class="image-container">
+    <span class="arrow" onclick="prevImage()">&lt;</span>
+    <div class="image-placeholder"><img src="bild1.jpg" ></div>
+  
+
+    <div class="image-placeholder"><img src="bild2.jpg" ></div>
+    <div class="image-placeholder"><img src="bild3.jpg" ></div>    
+    <span class="arrow" onclick="nextImage()">&gt;</span> 
+
+  </div>
+   <p class="downchars">Folgende Komponenten Möglich: 
+      intel core i3 , Festplatte 250-512gb, dvd laufwerk</p>
   <br>
   <p class="chars">Kontakt:</p>
-  <a href="mailto:sascha.pflaum23@gmail.com" target="_blank">
+  <a href="mailto:cwrsnabburg@gmail.com" target="_blank">
     <button class="glow-on-hover">E-Mail</button>
   </a>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 
 
   <p class="downchars">Copyright 2024 @computerwerkstatt</p>
   <br>
+
+
+  <script>
+    let currentImage = 0;
+    const images = document.querySelectorAll('.image-placeholder');
+
+    function showImage(index) {
+      images.forEach((img, i) => img.style.display = i === index ? 'block' : 'none');
+    }
+
+    function nextImage() {
+      currentImage = (currentImage + 1) % images.length;
+      showImage(currentImage);
+    }
+
+    function prevImage() {
+      currentImage = (currentImage - 1 + images.length) % images.length;
+      showImage(currentImage);
+    }
+
+    // Initial das erste Bild anzeigen
+    showImage(currentImage); 
+  </script>
+
 
 </body>
 </html>
